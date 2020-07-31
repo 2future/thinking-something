@@ -7,7 +7,7 @@ import java.util.Objects;
 /**
  * @author mz
  * @version V1.0
- * @Title TimeConpare
+ * @Title TimeSegmentCompareCover
  * @Package com.mz.time
  * @Description 时间端比较是否重叠
  * @date 2020/7/31 9:33 上午
