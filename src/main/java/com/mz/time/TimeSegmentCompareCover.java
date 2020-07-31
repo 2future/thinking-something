@@ -39,17 +39,17 @@ public class TimeSegmentCompareCover {
             if (timeTemp.isClean()) {
                 timeTemp.coverTemp(convertToTimeStamp(timeNode));
             } else {
-                long partFirDiff = timeTemp.getTemp() - convertToTimeStamp(timeNode);
+                long partFirDiff = Math.abs(timeTemp.getTemp()-(timeTemp.getTemp() - convertToTimeStamp(timeNode))/2);
                 timeTemp.clean();
                 List<Date> timeNodes = partSed.getTimeNodes();
                 for (Date timeNodeSed : timeNodes) {
                     if (timeTemp.isClean()) {
                         timeTemp.coverTemp(convertToTimeStamp(timeNodeSed));
                     } else {
-                        long partSedDiff = timeTemp.getTemp() - convertToTimeStamp(timeNodeSed);
+                        long partSedDiff = Math.abs(timeTemp.getTemp()-(timeTemp.getTemp() - convertToTimeStamp(timeNodeSed))/2);
                         //中间点 值差
-                        long middleAbs = Math.abs(partFirDiff / 2 - partSedDiff / 2);
-                        return (middleAbs < (partFirDiff / 2 + partSedDiff / 2));
+                        long middleAbs = Math.abs(partFirDiff  - partSedDiff );
+                        return (middleAbs < (partFir.getDiffAbs() / 2 + partSed.getDiffAbs() / 2));
                     }
                 }
             }
@@ -57,7 +57,10 @@ public class TimeSegmentCompareCover {
         throw new UnsupportedOperationException();
     }
 
-    class TimeTemp {
+    /**
+     * 临时时间点
+     */
+   private class TimeTemp {
 
         private Long temp;
 
@@ -83,6 +86,5 @@ public class TimeSegmentCompareCover {
         Objects.requireNonNull(date);
         return date.getTime();
     }
-
 
 }

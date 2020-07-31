@@ -30,9 +30,15 @@ public class TimeSegment {
         Objects.requireNonNull(startPoint);
         Objects.requireNonNull(endPoint);
         List<Date> nodes = new ArrayList<>();
-        nodes.addAll((Collection<? extends Date>) startPoint.clone());
-        nodes.addAll((Collection<? extends Date>) endPoint.clone());
+        nodes.add(Date.class.cast(startPoint.clone()));
+        nodes.add(Date.class.cast(endPoint.clone()));
         return nodes;
+    }
+
+    public long getDiffAbs() {
+        Objects.requireNonNull(startPoint);
+        Objects.requireNonNull(endPoint);
+        return Math.abs(startPoint.getTime() - endPoint.getTime());
     }
 
 }
