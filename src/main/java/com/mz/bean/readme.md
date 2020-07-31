@@ -1,0 +1,1 @@
+# Dozer  用来代替 beanUtils 的bean 拷贝工具类 可通过xml 或者 java代码 （对实体无入侵） 具有不同类型字段匹配，深拷贝，index拷贝等功能 
