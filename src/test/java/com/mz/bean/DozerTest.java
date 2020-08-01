@@ -10,8 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.platform.commons.annotation.Testable;
 
 import static com.github.dozermapper.core.loader.api.FieldsMappingOptions.*;
-import static com.github.dozermapper.core.loader.api.TypeMappingOptions.mapId;
-import static com.github.dozermapper.core.loader.api.TypeMappingOptions.mapNull;
+import static com.github.dozermapper.core.loader.api.TypeMappingOptions.*;
 
 /**
  * @author mz
@@ -32,7 +31,7 @@ public class DozerTest {
                 mapping(OriginalBean.class, TargetBean.class,
                         TypeMappingOptions.oneWay(),
                         mapId("fieldFirst"),
-                        mapNull(true)
+                        mapNull(true),dateFormat("")
                 ).fields("fieldSecond", "fieldSecond",
                         copyByReference(),
                         collectionStrategy(true, RelationshipType.NON_CUMULATIVE),

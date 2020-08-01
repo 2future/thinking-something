@@ -69,6 +69,7 @@ public class TimeSegmentCompareCover {
         }
 
         public Long getTemp() {
+            Objects.requireNonNull(temp);
             return temp;
         }
 
